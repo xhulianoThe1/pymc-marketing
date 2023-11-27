@@ -323,7 +323,7 @@ class BaseMMM(ModelBuilder):
                 y2=likelihood_hdi_94[:, 1],
                 color="C0",
                 alpha=0.2,
-                label="$94\%$ HDI",
+                label=r"$94\%$ HDI",
             )
 
             ax.fill_between(
@@ -332,7 +332,7 @@ class BaseMMM(ModelBuilder):
                 y2=likelihood_hdi_50[:, 1],
                 color="C0",
                 alpha=0.3,
-                label="$50\%$ HDI",
+                label=r"$50\%$ HDI",
             )
 
             target_to_plot: np.ndarray = np.asarray(
@@ -405,7 +405,7 @@ class BaseMMM(ModelBuilder):
                     y2=hdi.isel(hdi=1),
                     color=f"C{i}",
                     alpha=0.25,
-                    label=f"$94\%$ HDI ({var_contribution})",
+                    label=fr"$94\%$ HDI ({var_contribution})",
                 )
                 ax.plot(
                     np.asarray(self.X[self.date_column]),
@@ -432,7 +432,7 @@ class BaseMMM(ModelBuilder):
                 y2=intercept_hdi[:, 1],
                 color=f"C{i + 1}",
                 alpha=0.25,
-                label="$94\%$ HDI (intercept)",
+                label=r"$94\%$ HDI (intercept)",
             )
             ax.plot(
                 np.asarray(self.X[self.date_column]),
@@ -459,7 +459,7 @@ class BaseMMM(ModelBuilder):
         fig, ax = plt.subplots(**plt_kwargs)
         sns.violinplot(data=param_samples_df, orient="h", ax=ax)
         ax.set(
-            title=f"Posterior Predictive {param_name} Parameter",
+            title=f"Posterior Distribution: {param_name} Parameter",
             xlabel=param_name,
             ylabel="channel",
         )
